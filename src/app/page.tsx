@@ -6,6 +6,7 @@ import { Header } from "@/components/Header"
 import { Sidebar } from "@/components/Sidebar"
 import { SidebarChatButton } from "@/components/SidebarrChatButton"
 import { Chat } from "@/types/Chat"
+import { openai } from "@/utils/openai"
 import { useEffect, useState } from "react"
 import { v4 as uuidv4 } from 'uuid'
 
@@ -133,12 +134,12 @@ const Page = () => {
 
         <Header
           openSidebarClick={openSidebar}
-          title={chatActive ? chatActive.title : 'Nova Conversa'}
+          title={chatActive ? chatActive.title : 'Novo Chat'}
           newChatClick={handleNewChat}
         />
 
         <ChatArea chat={chatActive} loading={AILoading} />
-
+          
         <Footer
           onSendMessage={handleSendMessage}
           disabled={AILoading}
