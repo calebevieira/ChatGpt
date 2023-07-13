@@ -47,7 +47,7 @@ export const ChatMessageInput = ({ disabled, onSend }: Props) => {
                 disabled={disabled}
                 ></textarea>
 
-                <div onClick={handleSendMessage} className={`self-end p-1 cursor-pointer rounded ${text.length ? ' opacity-100 hover:bg-black/20' : 'opacity-20'}`}>
+                <div onClick={handleSendMessage} className={`self-end p-1 cursor-pointer rounded ${text.length ? 'bg- opacity-100 hover:bg-black/20' : 'opacity-20 '}`}>
                     <IconSend width={14} height={14} />
                 </div>
         </div>

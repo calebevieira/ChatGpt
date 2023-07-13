@@ -28,24 +28,29 @@ const Page = () => {
   const openSidebar = () => setSidebarOpened(true)
   const closeSidebar = () => setSidebarOpened(false)
 
-  const getAiResponse = () => {
-    setTimeout(() => {
-      let chatListClone = [...chatList]
-      let chatIndex = chatListClone.findIndex(item => item.id === chatActiveId)
-      if (chatIndex > -1) {
+  const getAiResponse = async () => {
+    let chatListClone = [...chatList]
+    let chatIndex = chatListClone.findIndex(item => item.id === chatActiveId)
+    if (chatIndex > -1) {
+      const response = await openai.generate(
+      openai.translateMessages(chatListClone[chatIndex].messages)
+      )
+
+      if(response) {
         chatListClone[chatIndex].messages.push({
           id: uuidv4(),
           author: 'ai',
-          body: 'Aqui vai a resposta da Ai :)'
+          body: response
         })
       }
-      setChatList(chatListClone)
-      setAILoading(false)
-    }, 2000)
+
+}
+    setChatList(chatListClone)
+    setAILoading(false)
   }
 
   const handleClearConversations = () => {
-    if(AILoading) return
+    if (AILoading) return
     setChatActiveId('')
     setChatList([])
   }
@@ -139,7 +144,7 @@ const Page = () => {
         />
 
         <ChatArea chat={chatActive} loading={AILoading} />
-          
+
         <Footer
           onSendMessage={handleSendMessage}
           disabled={AILoading}

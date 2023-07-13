@@ -1,5 +1,4 @@
 import { ChatMessage } from "@/types/ChatMessage"
-import { Content } from "next/font/google"
 import { ChatCompletionRequestMessage, Configuration, OpenAIApi } from "openai"
 
 const config = new Configuration({
