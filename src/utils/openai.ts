@@ -1,5 +1,7 @@
 import { ChatMessage } from "@/types/ChatMessage"
 import { ChatCompletionRequestMessage, Configuration, OpenAIApi } from "openai"
+require('dotenv').config();
+
 
 const config = new Configuration({
     apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY
